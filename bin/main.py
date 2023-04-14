@@ -1,4 +1,5 @@
-#! /usr/bin/env python
+#! /usr/bin/env pythonTo increase the frequency of bullet firing, you can decrease the delay between each bullet firing. You can do this by decreasing the value of the variable "delay" in the while loop. For example, you can set it to 30 instead of 60 to fire bullets more frequently:
+
 # -*- coding: utf-8 -*-
 
 import sys
@@ -145,10 +146,15 @@ def main():
                 row.active = False
 
         # 响应用户的操作
-        for event in pygame.event.get():
-            if event.type == 12:  # 如果用户按下屏幕上的关闭按钮，触发QUIT事件，程序退出
-                pygame.quit()
-                sys.exit()
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                running = False
+
+        # your game logic here
+
+        pygame.quit()
 
         if delay == 0:
             delay = 60
